@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vườn Hoa Tình Yêu</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle, #541044, #120018, #000);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff8acb;
+    text-shadow: 0 0 15px pink;
+    margin-bottom: 30px;
+    animation: glow 2s infinite alternate;
+}
+
+.heart {
+    font-size: 130px;
+    animation: heartbeat 1s infinite;
+    filter: drop-shadow(0 0 25px #ff1493);
+}
+
+.message {
+    color: #ffc6e8;
+    font-size: 22px;
+    margin-top: 25px;
+    text-shadow: 0 0 15px pink;
+}
+
+.flower {
+    position: absolute;
+    font-size: 35px;
+    animation: flowerMove 4s infinite ease-in-out;
+}
+
+.f1 { top: 10%; left: 10%; }
+.f2 { top: 20%; right: 10%; animation-delay: 1s; }
+.f3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.f4 { bottom: 10%; right: 15%; animation-delay: 3s; }
+
+.petal {
+    position: absolute;
+    top: -30px;
+    animation: falling linear infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px pink; }
+    to { text-shadow: 0 0 30px hotpink; }
+}
+
+@keyframes flowerMove {
+    0%, 100% { transform: translateY(0) rotate(-10deg); }
+    50% { transform: translateY(-25px) rotate(10deg); }
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="flower f1">🌸</div>
+<div class="flower f2">🌹</div>
+<div class="flower f3">🌷</div>
+<div class="flower f4">🌺</div>
+
+<div class="container">
+    <h1>🌷 VƯỜN HOA TÌNH YÊU 🌷</h1>
+
+    <div class="heart">💗</div>
+
+    <div class="message">
+        Một trái tim ngập tràn yêu thương
+        <br><br>
+        🌸 Hoa nở vì nắng – Tim nở vì yêu 🌸
+    </div>
+</div>
+
+<script>
+function createPetal() {
+    const petal = document.createElement("div");
+
+    petal.className = "petal";
+    petal.innerHTML = ["🌸", "💗", "🌹", "✨"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
+    petal.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, 9000);
+}
+
+setInterval(createPetal, 350);
+</script>
+
+</body>
+</html>
